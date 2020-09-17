@@ -8,6 +8,7 @@ const saveData = async (result, entryHandler) => {
     "Content-type": "application/json",
     Accept: "application/json"
   };
+  
   try {
     await axios.post("/performance_data", 
       { 
@@ -22,5 +23,21 @@ const saveData = async (result, entryHandler) => {
     alert("Something went wrong");
   }
 };
+  const getData = async () => {
+    let headers = await sessionStorage.getItem("credentials");
+    headers = JSON.parse(headers);
+    headers = {
+      ...headers,
+      "Content-type": "application/json",
+      Accept: "application/json"
+    };
+  
+    const response = await axios.get("/performance_data", {
+      headers: headers
+    });
+  
+    return response;
+  };
 
-export { saveData };
+
+export { getData, saveData };
