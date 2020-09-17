@@ -1,12 +1,10 @@
-
 import axios from "axios";
-
 
 const authenticate = async (email, password) => {
   try {
     const response = await axios.post("/auth/sign_in", {
       email: email,
-      password: password
+      password: password,
     });
     await storeAuthCredentials(response);
     return { authenticated: true };
@@ -21,9 +19,9 @@ const storeAuthCredentials = ({ headers }) => {
     client: headers["client"],
     access_token: headers["access-token"],
     expiry: headers["expiry"],
-    token_type: "Bearer"
+    token_type: "Bearer",
   };
   sessionStorage.setItem("credentials", JSON.stringify(credentials));
 };
 
-export { authenticate }
+export { authenticate };
