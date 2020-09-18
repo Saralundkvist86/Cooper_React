@@ -1,0 +1,49 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@700&display=swap');
+
+#header{
+   padding-bottom: 60px;
+   padding-top: 10px;
+   font-size: 50px;
+   font-family: 'Bungee', cursive;
+   text-align: center;
+}
+.large-text{
+    font-family: 'Kreon', serif;
+    font-size: 30px;
+}
+
+
+#login-submit {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+#score-text{
+    font-family: 'Kreon', serif;
+    font-size: 20px;
+   color: green;
+   padding-top: 60px;
+   padding-left:60px;
+}
+
+#gender-text{
+    font-family: 'Kreon', serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+#result-table {
+    margin-bottom: 200px;
+}
+
+#response-message{
+    padding-top: 15px;
+    font-family: 'Kreon', serif;
+    font-size: 20px;
+}
+
+#green-text{
+    color:green;
+}

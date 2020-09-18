@@ -16,8 +16,8 @@ const saveData = async (result, age, distance, entryHandler) => {
         performance_data: {
           data: {
             message: result,
-            distance: distance,
             age: age,
+            distance: distance,
           },
         },
       },

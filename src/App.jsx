@@ -5,6 +5,8 @@ import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
 import { Grid, Image, Header, Container, Button } from "semantic-ui-react";
+import FemaleTable from "./components/FemaleTable";
+import MaleTable from "./components/MaleTable";
 
 class App extends Component {
   state = {
@@ -60,7 +62,7 @@ class App extends Component {
       case authenticated:
         renderLogin = (
           <p id="message">
-            Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}
+            You're logged in as: {JSON.parse(sessionStorage.getItem("credentials")).uid}
           </p>
         );
         if (this.state.renderIndex) {
@@ -97,7 +99,7 @@ class App extends Component {
     }
     return (
       <>
-        <Header size="huge">Cooper Log</Header>
+        <Header id="header"><p>Cooper Log</p> - The easy way of keeping track of your Cooper Results -</Header>
         <Container>
           <Grid>
             <Grid.Row>
@@ -105,18 +107,23 @@ class App extends Component {
                 <Image src="./runner.jpg" padded />
               </Grid.Column>
               <Grid.Column width={6}>
-                <p class="large text">
-                  Keep track of your Cooper Results with Cooper Log.
+              
+                <p class="large-text">
+                  Keep track of your Cooper Results with Cooper Log!
                 </p>
-                <p>
-                  Log in to save your result so that you can keep track of your
+                <p class="large-text">
+                  Log in to save your result & keep track of your
                   development{" "}
                 </p>
               </Grid.Column>
             </Grid.Row>
 
+
+
+
             <Grid.Row>
-              <Grid.Column width={8}>
+            <Grid.Column width={5}><p id="score-text">Fill In Your Score Here!</p></Grid.Column>
+              <Grid.Column width={8} id="login-submit">
                 <InputFields onChangeHandler={this.onChangeHandler} />
                 {renderLogin}
 
@@ -131,8 +138,22 @@ class App extends Component {
                   }
                 />
                 {performanceDataIndex}
-              </Grid.Column>
+              </Grid.Column >
+             
             </Grid.Row>
+
+            <Grid.Row>
+  <Grid.Column width={8}>
+    <p id="gender-text">Female</p>
+  <FemaleTable />
+  </Grid.Column>
+ 
+  <Grid.Column width={8}>
+  <p id="gender-text">Male</p>
+  <MaleTable />
+  </Grid.Column>
+</Grid.Row>
+
           </Grid>
         </Container>
       </>

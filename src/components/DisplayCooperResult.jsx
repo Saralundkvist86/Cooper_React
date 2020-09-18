@@ -19,10 +19,10 @@ const DisplayCooperResult = ({
     <>
       {propsPassed && (
         <>
-          <h1 id="cooper-message">
+          <h3 id="cooper-message">
             {age} year old {gender} running {distance} meters.
-          </h1>
-          <h3 id="cooper-result">Result: {result}</h3>
+          </h3>
+          <h1 id="cooper-result">Your Result: {result}</h1>
           {authenticated && !entrySaved ? (
             <Button
               basic
@@ -33,7 +33,11 @@ const DisplayCooperResult = ({
               Save entry
             </Button>
           ) : (
-            <p id="response-message">Login to save your result</p>
+            <>
+            <p id="response-message">Remeber to save your data! </p>
+            <p id="response-message">You can check your development curve by logging in and click<p id="green-text">show past entries</p> </p>
+            
+            </>
           )}
         </>
       )}

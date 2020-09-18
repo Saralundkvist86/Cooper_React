@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getData } from "../modules/performanceData";
-import { Container } from "semantic-ui-react";
 import { Line } from "react-chartjs-2";
+
 
 class DisplayPerformanceData extends Component {
   state = {
@@ -29,12 +29,11 @@ class DisplayPerformanceData extends Component {
     let graph;
     let distances = [];
     let labels = [];
-
-    if (this.state.performanceData != null) {
-      this.state.performanceData.forEach(entry => {
-        distances.push(entry.data.distance)
-        labels.push(entry.data.message)
-      })
+if (this.state.performanceData != null) { 
+   this.state.performanceData.forEach(entry => {
+    distances.push(entry.data.distance)
+    labels.push(entry.data.message) 
+   })
       const data = {
         datasets: [{
           data: distances,
@@ -44,18 +43,13 @@ class DisplayPerformanceData extends Component {
       }
       graph = (
         <>
-        <Line
+        <Line id="line"  BackgroundColor= 'rgba(255, 0, 0)'
         data={data}
         />
         </>
       )
     }
-
-    return (
-      <Container as h1>
-        <div>{graph}</div>;
-      </Container>
-    );
+ return <div>{graph}</div>
   }
 }
 

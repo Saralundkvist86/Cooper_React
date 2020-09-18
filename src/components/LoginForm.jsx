@@ -1,5 +1,6 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
+
 
 const LoginForm = ({ submitFormHandler }) => {
   return (
@@ -11,7 +12,8 @@ const LoginForm = ({ submitFormHandler }) => {
       <label>Password</label>
       <input name="password" type="password" id="password"></input>
 
-      <button id="submit">Submit</button>
+      <Button basic
+              color="green" id="submit">Submit</Button>
     </form>
     </Form>
   );
