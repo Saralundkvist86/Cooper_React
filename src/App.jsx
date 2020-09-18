@@ -46,12 +46,12 @@ class App extends Component {
 
       case authenticated:
         renderLogin = (
-          <p>Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <p id="message" >Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
         );
         if (this.state.renderIndex) {
           performanceDataIndex = (
             <>
-              <DisplayPerformanceData
+              <DisplayPerformanceData 
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />

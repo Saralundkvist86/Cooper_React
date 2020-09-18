@@ -78,7 +78,6 @@ const cooperCalculator = (distance, gender, age) => {
       }
     }
   });
-  debugger
   return ratings[ratingIndex];
 };
 
