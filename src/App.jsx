@@ -4,6 +4,7 @@ import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import { authenticate } from "./modules/auth";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
+import { Grid, Image, Header, Container, Button } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -15,6 +16,18 @@ class App extends Component {
     message: "",
     entrySaved: false,
     renderIndex: false,
+  };
+  onLogin = async (e) => {
+    e.preventDefault();
+    const response = await authenticate(
+      e.target.email.value,
+      e.target.password.value
+    );
+    if (response.authenticated) {
+      this.setState({ authenticated: true });
+    } else {
+      this.setState({ message: response.message, renderLoginForm: false });
+    }
   };
 
   onChangeHandler = (e) => {
@@ -32,71 +45,99 @@ class App extends Component {
       case !renderLoginForm && !authenticated:
         renderLogin = (
           <>
-            <button
+            <Button
+              color="green"
               id="login"
               onClick={() => this.setState({ renderLoginForm: true })}
             >
               Login
-            </button>
+            </Button>
             <p id="message">{message}</p>
           </>
         );
         break;
 
-
       case authenticated:
         renderLogin = (
-          <p id="message" >Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <p id="message">
+            Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}
+          </p>
         );
         if (this.state.renderIndex) {
           performanceDataIndex = (
             <>
-              <DisplayPerformanceData 
+              <DisplayPerformanceData
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />
-              <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+              <Button
+                basic
+                color="black"
+                onClick={() => this.setState({ renderIndex: false })}
+              >
+                Hide past entries
+              </Button>
             </>
-          )
+          );
         } else {
           performanceDataIndex = (
-            <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
-          )}
+            <Button
+              basic
+              color="black"
+              id="show-index"
+              onClick={() => this.setState({ renderIndex: true })}
+            >
+              Show past entries
+            </Button>
+          );
+        }
         break;
-        default:
-          break;
+      default:
+        break;
     }
     return (
       <>
-        <InputFields onChangeHandler={this.onChangeHandler} />
-        {renderLogin}
+        <Header size="huge">Cooper Log</Header>
+        <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={10}>
+                <Image src="./runner.jpg" padded />
+              </Grid.Column>
+              <Grid.Column width={6}>
+                <p class="large text">
+                  Keep track of your Cooper Results with Cooper Log.
+                </p>
+                <p>
+                  Log in to save your result so that you can keep track of your
+                  development{" "}
+                </p>
+              </Grid.Column>
+            </Grid.Row>
 
-        <DisplayCooperResult
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={() =>
-            this.setState({ entrySaved: true, updateIndex: true })
-          }
-        />
-        {performanceDataIndex}
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <InputFields onChangeHandler={this.onChangeHandler} />
+                {renderLogin}
+
+                <DisplayCooperResult
+                  distance={this.state.distance}
+                  gender={this.state.gender}
+                  age={this.state.age}
+                  authenticated={this.state.authenticated}
+                  entrySaved={this.state.entrySaved}
+                  entryHandler={() =>
+                    this.setState({ entrySaved: true, updateIndex: true })
+                  }
+                />
+                {performanceDataIndex}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </>
     );
   }
-  onLogin = async (e) => {
-    e.preventDefault();
-    const response = await authenticate(
-      e.target.email.value,
-      e.target.password.value
-    );
-    if (response.authenticated) {
-      this.setState({ authenticated: true });
-    } else {
-      this.setState({ message: response.message, renderLoginForm: false });
-    }
-  };
 }
 
 export default App;

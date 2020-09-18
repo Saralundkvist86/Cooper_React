@@ -1,7 +1,9 @@
 import React from "react";
+import { Form } from "semantic-ui-react";
 
 const LoginForm = ({ submitFormHandler }) => {
   return (
+    <Form>
     <form onSubmit={submitFormHandler} id="login-form">
       <label>Email</label>
       <input name="email" type="email" id="email"></input>
@@ -11,6 +13,7 @@ const LoginForm = ({ submitFormHandler }) => {
 
       <button id="submit">Submit</button>
     </form>
+    </Form>
   );
 };
 
