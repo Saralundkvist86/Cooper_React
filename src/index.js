@@ -6,7 +6,7 @@ import axios from "axios";
 
 let apiUrl;
 if (process.env.NODE_ENV === "production") {
-  apiUrl = "https://ca-cooper-api.herokuapp.com/api/v1";
+  apiUrl = "https://saral-cooper-api.herokuapp.com/api/v1/auth";
 } else {
   apiUrl = "http://localhost:3000/api/v1";
 }
