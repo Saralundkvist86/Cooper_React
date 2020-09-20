@@ -17,7 +17,7 @@ describe("<DisplayCooperResult />", () => {
     });
 
     it("and returns the data user put in", () => {
-      expect(describedComponent.find("p#cooper-message").text()).toEqual(
+      expect(describedComponent.find("#cooper-message").text()).toEqual(
         "23 y/o female running 1000 meters."
       );
     });
@@ -31,12 +31,12 @@ describe("<DisplayCooperResult />", () => {
     });
 
     it("and returns the assessment", () => {
-      expect(describedComponent.find("p#cooper-result").text()).toEqual("Result: Average");
+      expect(describedComponent.find("#cooper-result").text()).toEqual("Result: Average");
     });
 
     it("and returns the data user put in", () => {
-      expect(describedComponent.find("p#cooper-message").text()).toEqual(
-        "23 y/o female running 2000 meters."
+      expect(describedComponent.find("#cooper-message").text()).toEqual(
+        "23 year old female running 2000 meters."
       );
     });
   })

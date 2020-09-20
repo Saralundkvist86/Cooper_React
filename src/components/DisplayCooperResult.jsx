@@ -18,11 +18,12 @@ const DisplayCooperResult = ({
   return (
     <>
       {propsPassed && (
-        <>
-          <h3 id="cooper-message">
+        <><div id="cooper-message">
+          <h3>
             {age} year old {gender} running {distance} meters.
-          </h3>
-          <h1 id="cooper-result">Your Result: {result}</h1>
+          </h3></div>
+          <div id="cooper-result">
+          <h1>Your Result: {result}</h1></div>
           {authenticated && !entrySaved ? (
             <Button
               basic

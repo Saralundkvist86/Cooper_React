@@ -12,7 +12,7 @@ describe("User authenticates", () => {
 
      
       });
-      cy.get("#message").should("contain", "Hi user@mail.com");
+      cy.get("#message").should("contain", "You're logged in as: user@mail.com");
     });
   
     it("unsuccessfully with invalid credentials", () => {
