@@ -4,6 +4,10 @@ This was a fullstack pair-programming challenge to build a Cooper calculator in 
 We wrote all the logic together and styled/deployed individually.
 Result chart is created using Chart.js
 
+### Login as a user
+email: user@mail.com
+password: password
+
 ### Dependencies
 - Yarn
 - Cypress
